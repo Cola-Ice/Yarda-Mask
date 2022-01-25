@@ -1,4 +1,4 @@
-package com.yarda.mask;
+package com.yarda.mask.masker;
 
 /**
  * 脱敏节点

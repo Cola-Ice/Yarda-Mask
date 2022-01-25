@@ -1,7 +1,7 @@
 package com.yarda.mask.annotation;
 
 
-import com.yarda.mask.Masker;
+import com.yarda.mask.masker.Masker;
 
 import java.lang.annotation.ElementType;
 import java.lang.annotation.Retention;

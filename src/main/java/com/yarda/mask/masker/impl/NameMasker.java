@@ -1,6 +1,6 @@
-package com.yarda.mask.masker;
+package com.yarda.mask.masker.impl;
 
-import com.yarda.mask.Masker;
+import com.yarda.mask.masker.Masker;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Component;
 import org.springframework.util.StringUtils;

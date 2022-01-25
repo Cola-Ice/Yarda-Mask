@@ -1,6 +1,6 @@
 package com.yarda.mask.aspect;
 
-import com.yarda.mask.Masker;
+import com.yarda.mask.masker.Masker;
 import com.yarda.mask.annotation.MaskField;
 import com.yarda.mask.utils.*;
 import lombok.extern.slf4j.Slf4j;
