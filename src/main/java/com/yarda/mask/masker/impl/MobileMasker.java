@@ -20,14 +20,14 @@ public class MobileMasker implements Masker<String> {
     private static final int MOBILE_NUMBER_LENGTH = 11;
 
     @Override
-    public String encrypt(String value) {
+    public String mask(String value) {
         String result = null;
         try {
             if (value != null && value.length() == MOBILE_NUMBER_LENGTH) {
                 result = value.substring(0, 3).concat("****").concat((value).substring(7));
             }
         } catch (Exception e) {
-            log.info("脱敏失败:value:{};msg:{}", value, e.getMessage());
+            log.error("脱敏失败:value:{};msg:{}", value, e.getMessage());
         }
         return result;
     }

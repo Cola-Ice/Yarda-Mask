@@ -17,7 +17,7 @@ import org.springframework.util.StringUtils;
 public class NameMasker implements Masker<String> {
 
     @Override
-    public String encrypt(String value) {
+    public String mask(String value) {
         String result = null;
         try {
             if (!StringUtils.isEmpty(value)) {
@@ -33,7 +33,7 @@ public class NameMasker implements Masker<String> {
                 }
             }
         } catch (Exception e) {
-            log.info("脱敏失败:value:{};msg:{}", value, e.getMessage());
+            log.error("脱敏失败:value:{};msg:{}", value, e.getMessage());
         }
         return result;
     }

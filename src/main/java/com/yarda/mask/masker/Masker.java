@@ -14,5 +14,5 @@ public interface Masker<T> {
      * @param value 脱敏前的值
      * @return 脱敏后的值
      */
-    public T encrypt(T value);
+    public T mask(T value);
 }

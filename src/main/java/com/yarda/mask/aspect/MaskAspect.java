@@ -46,7 +46,7 @@ public class MaskAspect {
         }
         long start = System.currentTimeMillis();
         this.handle(jsonResult);
-        System.out.println("脱敏耗时:" + (System.currentTimeMillis() - start) + "ms");
+        log.debug("脱敏耗时:" + (System.currentTimeMillis() - start) + "ms");
     }
 
     /**
@@ -102,11 +102,11 @@ public class MaskAspect {
                         MaskField encryptAnnotation = field.getAnnotation(MaskField.class);
                         if (encryptAnnotation != null) {
                             String fieldName = field.getName();
-                            Masker<?> encryptor = SpringUtils.getBean(encryptAnnotation.encryptHandler());
-                            if (encryptor == null) {
-                                encryptor = encryptAnnotation.encryptHandler().newInstance();
+                            Masker<?> masker = SpringUtils.getBean(encryptAnnotation.encryptHandler());
+                            if (masker == null) {
+                                masker = encryptAnnotation.encryptHandler().newInstance();
                             }
-                            Object encryptValue = encryptor.encrypt(ReflectUtils.invokeGetter(result, field.getName()));
+                            Object encryptValue = masker.mask(ReflectUtils.invokeGetter(result, field.getName()));
                             ReflectUtils.invokeSetter(result, fieldName, encryptValue);
                         }
                     } else {
@@ -115,7 +115,7 @@ public class MaskAspect {
                 }
             }
         } catch (Throwable e) {
-            log.info("脱敏异常:msg:{},obj:{}", e.getMessage(), result);
+            log.error("脱敏异常:msg:{},obj:{}", e.getMessage(), result);
         }
     }
 
